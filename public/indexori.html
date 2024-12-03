@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcuaZone</title>
+    <!-- Favicon predeterminado -->
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    
+    <!-- Para dispositivos Apple -->
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
+
+    <!-- Otros tamaños comunes -->
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+    <style>
+        /* Estilo general */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url(azuuul.jpg);
+            background-size: cover;
+            color: #333;
+        }
+
+        h1, h2 {
+            margin: 0;
+            font-family: Verdana, Geneva, Tahoma;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #ffffff;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #2b4ba8;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        ul {
+            font-size: 1rem;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin-left: 20px;
+            padding-left: 20px;
+            list-style: circle;
+        }
+
+        /* Header */
+        header {
+            background-color: #2b4ba8;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Logo en el lado izquierdo */
+        .logo {
+            width: 50px;
+            height: 50px;
+        }
+
+        header h1 {
+            margin: 0;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .auth-buttons a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            padding: 5px 10px;
+            border: 2px solid white;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .auth-buttons a:hover {
+            background-color: white;
+            color: #2b4ba8;
+        }
+
+        /* Barra de navegación */
+        nav {
+            background-color: #f0f4fb;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: #2b4ba8;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 8px 15px;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #2b4ba8;
+            color: white;
+            border-color: #2b4ba8;
+        }
+
+        /* Contenedor principal */
+        .main-content {
+            padding: 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2b4ba8;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 0.9rem;
+            position: relative;
+        }
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 10px;
+        }
+        .footer-container h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .footer-container p {
+            margin: 5px 0;
+        }
+
+        .social-media .icons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .social-icon {
+            width: 32px;
+            height: 32px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+
+        /* Ajuste de diseño responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+                margin: 10px 0;
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+                margin-top: 10px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px 0;
+            }
+
+            nav a {
+                padding: 10px 20px;
+                font-size: 1.2rem;
+                text-align: center;
+            }
+        }
+
+        /* Para dispositivos más pequeños (móviles) */
+        @media (max-width: 480px) {
+            header {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.6rem;
+                margin: 10px 0;
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+
+            nav a {
+                font-size: 1rem;
+                padding: 12px 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <img src="logo.png" alt="Logo de EcuaZone" class="logo">
+        <h1>EcuaZone: El Mundo de las Ecuaciones</h1>
+        <div class="auth-buttons">
+            <a href="Inicio Sesion.html" class="btn login">Iniciar Sesión</a>
+            <a href="Registro.html" class="btn register">Regístrate</a>
+        </div>
+    </header>
+
+    <!-- Barra de navegación -->
+    <nav>
+        <a href="ecuacionesprimergrado.html">Lineales</a>
+        <a href="ecuacionessegundogrado.html">Cuadráticas</a>
+        <a href="ecuacionestercergrado.html">Cúbicas</a>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <div class="card">
+            <h2>¿Qué son las ecuaciones?</h2>
+            <p>
+                Las ecuaciones son expresiones matemáticas que establecen una igualdad entre dos términos. 
+                Representan relaciones fundamentales y tienen aplicaciones en la física, 
+                economía, ingeniería, y muchas más disciplinas.
+            </p>
+            <ul>
+                <li><strong>Ecuaciones lineales:</strong> Representan relaciones directas y sencillas.</li>
+                <li><strong>Ecuaciones cuadráticas:</strong> Modelan trayectorias y áreas.</li>
+                <li><strong>Ecuaciones cúbicas:</strong> Describen curvas más complejas y comportamientos no lineales.</li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2>¿Qué encontrarás aquí?</h2>
+            <p>
+                Aprenderás las diferencias entre ecuaciones lineales, cuadráticas y cúbicas. 
+                Obtendrás ayuda de una calculadora que te ayudará a resolverlas. 
+                Esta página te guía paso a paso para que desarrolles y mejores tus habilidades. 
+                Una vez comprendido el tema, podrás ponerlo en práctica en la vida real 
+                y demostrar lo mucho que aprendiste en EcuaZone.
+            </p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="contact-info">
+                <h3>Contáctanos</h3>
+                <p><strong>Teléfono:</strong> +34 123 456 789</p>
+                <p><strong>Email:</strong> contacto@ecuazone.com</p>
+            </div>
+            <div class="social-media">
+                <h3>Redes Sociales</h3>
+                <div class="icons">
+                    <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" alt="Facebook" class="social-icon">
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="social-icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <p>&copy; 2024 EcuaZone. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

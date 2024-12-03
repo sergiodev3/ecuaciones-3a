@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecuación cuadráticas</title>
+    <!-- Favicon predeterminado -->
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    
+    <!-- Para dispositivos Apple -->
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
+
+    <!-- Otros tamaños comunes -->
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            /* Modificado */
+            background-image: url('azuuul.jpg');
+            background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+            background-attachment: fixed; /* Fija la imagen durante el scroll */
+            color: #ffffff;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        header {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 15px 20px; /* Similar al diseño previo */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center; /* Centra horizontalmente el contenido */
+        align-items: center; /* Alinea verticalmente el logo y texto */
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header .logo img {
+            height: 50px; /* Tamaño ajustado para el logo */
+            margin-right: 10px; /* Espacio entre el logo y el texto */
+        }
+
+        header .logo span {
+            font-size: 24px; /* Tamaño del texto */
+            font-weight: 600; /* Negrita */
+            color: #ffffff; /* Blanco para el texto */
+        }
+
+
+        /* Barra de navegación */
+        nav {
+            width: 100%;
+            background-color: #95979bb6;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #ffffff;
+            font-size: 18px;
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            margin: 0 20px;
+            padding: 4px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #95979bb6;
+            border-radius: 5px;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .container, .info, .steps-container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .container h2, .info h4, .steps-container h2 {
+            margin-bottom: 15px;
+        }
+
+        .container label {
+            font-size: 16px;
+            color: #f5f5f5;
+            margin-top: 15px;
+            display: block;
+            text-align: left;
+        }
+
+        .container input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: none;
+            width: 100%;
+            margin-top: 5px;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        .container button {
+            background-color: #3b25fc;
+            color: #ffffff;
+            padding: 15px;
+            width: 100%;
+            border-radius: 6px;
+            border: none;
+            margin-top: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .container button:hover {
+            background-color: #171fb7;
+        }
+
+        .info {
+            color: #f5f5f5;
+        }
+
+        .info ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .info ul li {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .info p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .steps {
+            display: none;
+            margin-top: 20px;
+            color: #ffffff;
+        }
+
+        .steps h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .steps div {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .steps .result {
+        font-size: 22px;
+        font-weight: bold;
+        color: #ffffff; /* Cambiar a blanco para mayor contraste */
+        }
+
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                align-items: center;
+                width: 90%;
+            }
+
+            .container, .info, .steps-container {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="EcuaZone Logo">
+            <span>CALCULADORA CUADRÁTICA</span>
+        </div>
+    </header>
+    <!-- Barra de navegación debajo del header -->
+    <nav>
+        <a href="indexori.html">Inicio</a>
+    </nav>
+
+    <div class="main-container">
+        <!-- Calculadora -->
+        <div class="container" id="calculadora">
+            <h2>Calculadora de Ecuación de Segundo Grado</h2>
+            <label for="a">Introduce el valor de a:</label>
+            <input type="number" id="a" placeholder="Valor de a">
+            <label for="b">Introduce el valor de b:</label>
+            <input type="number" id="b" placeholder="Valor de b">
+            <label for="c">Introduce el valor de c:</label>
+            <input type="number" id="c" placeholder="Valor de c">
+            <button onclick="resolverEcuacion()">Resolver</button>
+        </div>
+
+        <!-- Información adicional -->
+        <div class="info" id="informacion">
+            <h4>Ejemplo de ecuaciones cuadráticas</h4>
+            <p>Una ecuación cuadrática tiene la forma general:</p>
+            <p><strong>ax² + bx + c = 0</strong></p>
+            <h5>Ejemplos:</h5>
+            <ul>
+                <li><strong>Ecuación: 2x² + 4x - 6 = 0</strong> → Soluciones: x₁ = 1, \(x₂ = -3\)</li>
+                <li><strong>Ecuación: x² - 4 = 0</strong> → Soluciones: x₁ = 2, x₂ = -2</li>
+                <li><strong>Ecuación: x² + 6x + 9 = 0</strong> → Solución: x = -3 (raíz doble)</li>
+            </ul>
+            <p>La ecuación cuadrática se resuelve utilizando la fórmula:</p>
+            <p><strong>x = (-b ± √(b² - 4ac)) / 2a</strong></p>
+        </div>
+    </div>
+
+    <!-- Contenedor de resultados y pasos -->
+    <div class="steps-container">
+        <div class="steps" id="steps">
+            <h2>Pasos para resolver:</h2>
+            <div id="step1"></div>
+            <div id="step2"></div>
+            <div id="step3"></div>
+            <div class="result" id="resultado"></div>
+        </div>
+    </div>
+
+    <script>
+        function resolverEcuacion() {
+            const a = parseFloat(document.getElementById("a").value);
+            const b = parseFloat(document.getElementById("b").value);
+            const c = parseFloat(document.getElementById("c").value);
+
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                alert("Por favor, ingresa valores válidos para a, b y c.");
+                return;
+            }
+
+            // Calculamos el discriminante: D = b^2 - 4ac
+            const D = Math.pow(b, 2) - (4 * a * c);
+            const pasos = document.getElementById("steps");
+            pasos.style.display = "block"; // Mostrar los pasos
+
+            // Limpiar pasos previos
+            document.getElementById("step1").innerHTML = "";
+            document.getElementById("step2").innerHTML = "";
+            document.getElementById("step3").innerHTML = "";
+
+            let resultado = "";
+
+            // Paso 1: Calcular el discriminante
+            document.getElementById("step1").innerHTML = `<div><strong>Paso 1:</strong> Calculamos el discriminante: D = b² - 4ac = ${Math.pow(b, 2)} - 4(${a})(${c}) = ${D}</div>`;
+
+            // Paso 2: Determinar el tipo de soluciones
+            if (D > 0) {
+                // Dos soluciones reales distintas
+                const x1 = (-b + Math.sqrt(D)) / (2 * a);
+                const x2 = (-b - Math.sqrt(D)) / (2 * a);
+                resultado = `Las soluciones son: x₁ = ${x1} y x₂ = ${x2}`;
+                document.getElementById("step2").innerHTML = `<div><strong>Paso 2:</strong> Como D > 0, existen dos soluciones reales distintas:</div>`;
+            } else if (D === 0) {
+                // Una solución real (raíz doble)
+                const x = -b / (2 * a);
+                resultado = `La solución es: x = ${x}`;
+                document.getElementById("step2").innerHTML = `<div><strong>Paso 2:</strong> Como D = 0, existe una solución real doble:</div>`;
+            } else {
+                // No hay soluciones reales
+                resultado = "No existen soluciones reales (el discriminante es negativo).";
+                document.getElementById("step2").innerHTML = `<div><strong>Paso 2:</strong> Como D < 0, no hay soluciones reales.</div>`;
+            }
+
+            // Paso 3: Mostrar el resultado
+            document.getElementById("step3").innerHTML = `<div><strong>Paso 3:</strong> ${resultado}</div>`;
+            document.getElementById("resultado").innerText = resultado;
+        }
+    </script>
+
+</body>
+</html>

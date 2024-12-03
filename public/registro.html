@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro</title>
+  <!-- Favicon predeterminado -->
+  <link rel="icon" href="logo.png" type="image/x-icon">
+  
+  <!-- Para dispositivos Apple -->
+  <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
+
+  <!-- Otros tamaños comunes -->
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url(azuuul.jpg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .form-container {
+      background: #ffffff9c;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+    .form-container h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input {
+      width: 95%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .form-group button:hover {
+      background-color: #0056b3;
+    }
+    .form-group a {
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      color: #007bff;
+    }
+    #RegistroMensaje {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    /* Media queries para diseño responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+        height: auto;
+      }
+
+      .form-container {
+        padding: 15px;
+        margin: 0 10px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      .form-group input, .form-group button {
+        font-size: 14px;
+      }
+
+      .form-group a {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 18px;
+      }
+
+      .form-group input, .form-group button {
+        font-size: 12px;
+        padding: 8px;
+      }
+
+      .form-group button {
+        font-size: 14px;
+      }
+
+      .form-container {
+        margin: 0;
+        padding: 10px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .form-container {
+        max-width: 500px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .form-group input {
+        font-size: 18px;
+      }
+
+      .form-group button {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Registrate</h1>
+    <form id="registroForm">
+      <div class="form-group">
+        <label for="nombre">Username</label>
+        <input type="text" id="nombre" placeholder="Ingresa tu nombre" name="username">
+      </div>
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" placeholder="Ingresa tu correo" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" placeholder="Crea una contraseña" name="password" required>
+      </div>
+      <div class="form-group">
+        <button type="submit">Registrarse</button>
+      </div>
+      <a href="login.html">¿Ya tienes cuenta? Inicia sesión</a>
+    </form>
+    <div id="RegistroMensaje"></div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const registroForm = document.querySelector("#registroForm");
+    const registroMensaje = document.querySelector("#RegistroMensaje");
+  
+    registroForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const username = e.target.username.value;
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+  
+      registroMensaje.style.display = "none"; // Oculta mensajes previos
+  
+      try {
+        const response = await axios.post("/api/v1/users/register", {
+          username,
+          email,
+          password,
+        });
+  
+        // Si se registra exitosamente
+        alert("Usuario registrado correctamente");
+        window.location.href = "login.html"; // Redirige al formulario de login
+      } catch (error) {
+        // Manejo de errores
+        if (error.response && error.response.data.msg) {
+          registroMensaje.textContent = error.response.data.msg; // Mensaje del backend
+        } else {
+          registroMensaje.textContent = "Error en el registro. Intenta nuevamente.";
+        }
+        registroMensaje.style.display = "block";
+      }
+    });
+  </script>
+  
+  
+</body>
+</html>

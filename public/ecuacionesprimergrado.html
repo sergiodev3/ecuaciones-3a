@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+    <title>Ecaciones lineales</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-image: url(azuuul.jpg);
+            color: #ffffff;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Alineación desde la parte superior */
+            text-align: center;
+            padding-top: 10px; /* Reducido para acercar el contenido */
+        }
+
+        header {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.6);;
+            padding: 15px 0; /* Reducido para acercar el header */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center; /* Centra el contenido del header */
+            align-items: center; /* Alineación vertical del logo y texto */
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centrado del logo y texto */
+        }
+
+        header .logo img {
+            height: 50px; /* Ajusta el tamaño del logo */
+            margin-right: 10px; /* Espacio entre logo y texto */
+        }
+
+        header .logo span {
+            font-size: 24px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        nav {
+            width: 100%;
+            background-color: #95979bb6;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: #ffffff;
+            font-size: 18px;
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            margin: 0 20px;
+            padding: 4px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #95979bb6;
+            border-radius: 5px;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            gap: 20px;
+            margin-top: 50px;
+            z-index: 1;
+        }
+
+        .container, .info, .steps-container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .container h2, .info h4, .steps-container h2 {
+            margin-bottom: 15px;
+        }
+
+        .container label {
+            font-size: 16px;
+            color: #f5f5f5;
+            margin-top: 15px;
+            display: block;
+            text-align: left;
+        }
+
+        .container input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: none;
+            width: 100%;
+            margin-top: 5px;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        .container button {
+            background-color: #3b25fc;
+            color: #ffffff;
+            padding: 15px;
+            width: 100%;
+            border-radius: 6px;
+            border: none;
+            margin-top: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .container button:hover {
+            background-color: #171fb7;
+        }
+
+        .info {
+            color: #f5f5f5;
+        }
+
+        .info ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .info ul li {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .info p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .steps {
+            display: none;
+            margin-top: 20px;
+            color: #ffffff;
+        }
+
+        .steps h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .steps div {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .steps .result {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                align-items: center;
+                width: 90%;
+            }
+
+            .container, .info, .steps-container {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="EcuaZone Logo"> <!-- Logo de imagen -->
+            <span>CALCULADORA LINEAL</span> <!-- Texto junto al logo -->
+        </div>
+    </header>
+
+    <nav>
+        <a href="indexori.html">Inicio</a> <!-- Enlace debajo del header -->
+    </nav>
+
+    <div class="main-container">
+        <!-- Información adicional (Ejemplos) -->
+        <div class="info">
+            <h4>Ejemplos de ecuaciones</h4>
+            <p>Ecuación: \( ax + b = 0 \)</p>
+            <ul>
+                <li>Ejemplo: 2x + 4 = 0 → x = -2</li>
+                <li>Ejemplo: -4x + 7 = 0 → x = 1.75</li>
+                <li>Ejemplo: 10x - 100 = 0 → x = 10</li>
+                <li>Ejemplo: 10x + 5 = 0 → x = -0.5</li>
+                <li>Ejemplo: 12x + 24 = 0 → x = -2</li>
+            </ul>
+        </div>
+
+        <!-- Calculadora -->
+        <div class="container">
+            <h2>Calculadora de Ecuación de Primer Grado</h2>
+            <label for="a">Valor de a:</label>
+            <input type="number" id="a" required>
+            <label for="b">Valor de b:</label>
+            <input type="number" id="b" required>
+            <button onclick="resolverEcuacion()">Resolver Ecuación</button>
+        </div>
+    </div>
+
+    <!-- Contenedor de resultados y pasos -->
+    <div class="steps-container">
+        <div class="steps" id="steps">
+            <h2>Pasos para resolver:</h2>
+            <div id="step1"></div>
+            <div id="step2"></div>
+            <div id="step3"></div>
+            <div class="result" id="resultado"></div>
+        </div>
+    </div>
+
+    <script>
+        function resolverEcuacion() {
+            const a = parseFloat(document.getElementById("a").value);
+            const b = parseFloat(document.getElementById("b").value);
+
+            if (isNaN(a) || isNaN(b)) {
+                alert("Por favor, ingresa valores válidos para 'a' y 'b'.");
+                return;
+            }
+            if (a === 0) {
+                alert("'a' no puede ser cero en una ecuación de primer grado.");
+                return;
+            }
+
+            // Calcular el resultado
+            const x = -b / a;
+
+            // Mostrar pasos detallados
+            const pasos = document.getElementById("steps");
+            pasos.style.display = "block";
+            document.getElementById("step1").innerHTML = `
+                <strong>Paso 1:</strong> Partimos de la ecuación general: 
+                <strong>${a}x + ${b} = 0</strong>. Identificamos los valores de 'a' y 'b'.
+            `;
+            document.getElementById("step2").innerHTML = `
+                <strong>Paso 2:</strong> Aislamos el término con 'x'. Restamos ${b} en ambos lados: 
+                <strong>${a}x = -${b}</strong>.
+            `;
+            document.getElementById("step3").innerHTML = `
+                <strong>Paso 3:</strong> Dividimos ambos lados entre ${a} para despejar 'x': 
+                <strong>x = -(${b}) / ${a}</strong>.
+            `;
+            document.getElementById("resultado").innerHTML = `
+                <strong>Resultado:</strong> El valor de 'x' es: <strong>${x}</strong>.
+            `;
+        }
+    </script>
+
+</body>
+</html>
